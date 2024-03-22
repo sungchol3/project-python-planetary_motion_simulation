@@ -2,7 +2,7 @@ import turtle
 import time
 
 # Constants
-G = 100000 # Gravitational constant
+G = 20000 # Gravitational constant
 # Create planets
 class Planet(turtle.Turtle):
     def __init__(self, m, x, y, vx, vy, color="black"):
@@ -33,7 +33,6 @@ class Planet(turtle.Turtle):
         return ax, ay
     
     def move(self, dt):
-        print("pos: ", self.x, self.y, "vel: ", self.vx, self.vy)
         self.x += self.vx * dt
         self.y += self.vy * dt
         self.tr.goto(self.x, self.y)
@@ -59,13 +58,13 @@ def distance(pl1, pl2):
 if __name__ == "__main__":
     dt = 0.01 #time step
     #create planets
-    pl1 = Planet(100, 0, 0, 0, 0, color="red")
-    pl2 = Planet(100, 0, 0, 0, 0, color="blue")
+    pl1 = Planet(10, 0, 0, 0, 500, color="red")
+    pl2 = Planet(1000, 0, 0, 0, 0, color="blue")
     #set initial position
-    pl1.goto(0, 100)
+    pl1.goto(-200, -100)
     pl2.goto(0, -100)
     while distance(pl1, pl2) > 10:
         moving_simulation(pl1, pl2, dt)
-        time.sleep(dt)
+        #time.sleep(dt*0.01)
 
 input("Press any key to exit")
